@@ -1,0 +1,15 @@
+{
+  "name": "proxi-e2e",
+  "version": "1.0.0",
+  "description": "Cypress e2e tests for Proxi admin panel",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "e2e": "cypress run"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^4.12.0"
+  }
+}
