@@ -5,5 +5,6 @@ export function clickCreateNew(){
 }
 
 export function clickFilter(){
-    cy.get(ListHeader.filterButton).click();
+    const filterBtn = cy.get(ListHeader.filterButton).contains('Filter');
+    filterBtn.click();
 }
