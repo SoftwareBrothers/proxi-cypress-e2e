@@ -7,5 +7,10 @@ export default class CourseList {
         return course.parentsUntil('tbody').find('[data-testid="property-list-order"]').contains(order);
     };
 
+    static courseId= ( recordName, id) => {
+        const course = CourseList.courseRecordByName(recordName);
+        return course.parentsUntil('tbody').find('[data-testid="property-list-id"]').contains(id);
+    };
+
     static dotsCourseRecordButton = name => CourseList.courseRecordByName(name).find('[data-testid="actions-dropdown"]');
 }
