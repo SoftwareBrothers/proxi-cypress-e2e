@@ -4,6 +4,9 @@ import { assertCourseExists, goToCourse, assertCourseDoesnotExists } from '../ac
 import { createNewCourse, typeOrder, typeSlug, clickSave } from '../actions/course/createNewCourse';
 import { navigateToCourses } from '../actions/common/navigation';
 import { clickEdit } from '../actions/common/recordHeaderActions';
+import { clickFilter } from '../actions/common/listHeader';
+import { typeIdFiler, typeOrderFilter, typeSlugFilter } from '../actions/course/courseFilter';
+import { clickApply } from '../actions/common/filterActions';
 
 describe('Courses tests', () => {
 
@@ -13,21 +16,21 @@ describe('Courses tests', () => {
         login(email, password);
    });
 
-    it('Should create new course and check if it exists', () => {
+    it.skip('Should create new course and check if it exists', () => {
         const courseSlug = faker.random.word();
         navigateToCourses();
         createNewCourse(courseSlug, 1);
-        assertCourseExists(courseSlug, 1 );
+        assertCourseExists(courseSlug, 1, '6' );
     });
 
-    it('Should check if admin can edit created course', () => {
+    it.skip('Should check if admin can edit created course', () => {
         const courseSlug = faker.random.word();
         const editedSlug = faker.random.word();
         const editedOrder = 2;
 
         navigateToCourses();
         createNewCourse(courseSlug, 1);
-        assertCourseExists(courseSlug, 1);
+        assertCourseExists(courseSlug, 1, '7');
         goToCourse(courseSlug);
         clickEdit();
 
@@ -36,7 +39,53 @@ describe('Courses tests', () => {
         clickSave();
 
         assertCourseDoesnotExists(courseSlug);
-        assertCourseExists(editedSlug, editedOrder);
+        assertCourseExists(editedSlug, editedOrder, '7');
+    });
+
+    it('Should check if admin can filter courses by slug', () => {
+        const courseSlug = 'building-and-construction';
+        const courseId = '1';
+        const courseOrder = '1';
+        navigateToCourses();
+        clickFilter();
+        typeSlugFilter(courseSlug);
+        clickApply();
+        assertCourseExists(courseSlug, courseOrder, courseId);
+    });
+
+    it('Should check if admin can filter courses by id', () => {
+        const courseId = 2;
+        const courseSlug = 'restaurant-and-food';
+        const courseOrder = '2';
+        navigateToCourses();
+        clickFilter();
+        typeIdFiler(courseId);
+        clickApply();
+        assertCourseExists(courseSlug, courseOrder, courseId);
+    });
+
+    it('Should check if admin can filter courses by order', () => {
+        const courseOrder = 3;
+        const courseSlug = 'technical-production';
+        const courseId = 3;
+        navigateToCourses();
+        clickFilter();
+        typeOrderFilter(courseOrder);
+        clickApply();
+        assertCourseExists(courseSlug, courseOrder, courseId);
+    });
+
+    it('Should check if admin can filter courses by all possible filters', () => {
+        const courseId = 4;
+        const courseOrder = 4;
+        const courseSlug = 'health-and-youth';
+        navigateToCourses();
+        clickFilter();
+        typeSlugFilter(courseSlug);
+        typeOrderFilter(courseOrder);
+        typeIdFiler(courseId);
+        clickApply();
+        assertCourseExists(courseSlug, courseOrder, courseId);
     });
 
   })
