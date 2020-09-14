@@ -16,6 +16,7 @@ describe('Courses tests', () => {
         login(email, password);
    });
 
+    // Creating and editing courses tests are skipped because now admin do not have possibility to do this actions, and i am not sure when he will do this again
     it.skip('Should create new course and check if it exists', () => {
         const courseSlug = faker.random.word();
         navigateToCourses();

@@ -1,0 +1,8 @@
+/node_modules
+cypress.env.json
+/cypress/screenshots
+/cypress/videos
+/cypress/config.json
+example.json
+.gitignore
+cypress.json
