@@ -67,7 +67,7 @@ describe('Courses tests', () => {
 
     it('Should check if admin can filter courses by order', () => {
         const courseOrder = 3;
-        const courseSlug = 'technical-production';
+        const courseSlug = 'technical-and-industrial-production';
         const courseId = 3;
         navigateToCourses();
         clickFilter();

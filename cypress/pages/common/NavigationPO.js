@@ -6,7 +6,7 @@ export default class Navigation {
 
     static chapter = '[data-testid="sidebar-resource-link"]:nth-child(3)';
 
-    static word = '[data-testid="sidebar-resource-link"]:nth-child(4)';
+    static word = '[data-testid="sidebar-resource-link"]:nth-child(5)';
 
-    static user = '[data-testid="sidebar-resource-link"]:nth-child(5)';
+    static user = '[data-testid="sidebar-resource-link"]:nth-child(6)';
 }

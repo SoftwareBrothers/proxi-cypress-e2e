@@ -1,7 +1,9 @@
 {
-    "baseUrl": "",
+    "baseUrl": "https://gtbcgs6ct5.execute-api.eu-west-2.amazonaws.com/moscow/admin",
     "env": {
-        "email": "",
-        "password": ""
-      }
+        "email": "administrator@example.com",
+        "password": "password"
+      },
+    "viewportWidth": 1500,
+    "viewportHeight": 1100
 }
